@@ -10,25 +10,44 @@ class App extends Component {
     super(props);
     this.state = {
       data: [],
-
       columns: [{
         title: '',
         dataIndex: 'poster',
         key: 'poster',
-        render: text => <a><img src={text} width={75} alt={''}/></a>
+        // eslint-disable-next-line
+        render: text => <a><img src={text} width={75} alt={''} referrerPolicy={'never'}/></a>
       },{
         title: '电影名',
         dataIndex: 'title',
-        key: '_id',
+        // key: '_id',
+        // eslint-disable-next-line
         render: text => <a href="javascript:">{text}</a>
       }, {
         title: '评分',
         dataIndex: 'rating.average',
-        key: 'rating.average',
+        // key: 'rating.average',
+        sorter: (a, b) => a.rating.average - b.rating.average
       }, {
         title: '上映时间',
         dataIndex: 'pubdate[0]',
-        key: 'pubdate[0]',
+        // key: 'pubdate[0]',
+      }, {
+        title: '类型',
+        dataIndex: 'genres',
+        // key: 'genres',
+
+        render: text => {
+          let q=[];
+          // console.log(typeof(q));
+          for(const i of text) {
+            // console.log(i);
+            // eslint-disable-next-line
+            q.push(<a href="javascript:">{i} </a>);
+
+            // console.log((q))
+          }
+          return q
+        }
       }
         //   }, {
         //     title: 'Age',
