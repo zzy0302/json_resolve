@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c1ca5a0-7f0f-4e82-a907-f7c8aa681025" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,11 +30,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="171" column="18" selection-start-line="171" selection-start-column="18" selection-end-line="172" selection-end-column="21" />
+            <state relative-caret-position="-732">
+              <caret line="167" column="47" lean-forward="true" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#3509#3622#0" />
+                <element signature="e#3216#4454#0" />
               </folding>
             </state>
           </provider>
@@ -50,6 +50,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>zh_CN</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -123,6 +128,7 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -156,12 +162,13 @@
       <option name="presentableId" value="Default" />
       <updated>1555376137118</updated>
       <workItem from="1555376139198" duration="3453000" />
-      <workItem from="1555381600948" duration="16541000" />
+      <workItem from="1555381600948" duration="18837000" />
+      <workItem from="1555913589510" duration="4204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19994000" />
+    <option name="totallyTimeSpent" value="26494000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -216,11 +223,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="171" column="18" selection-start-line="171" selection-start-column="18" selection-end-line="172" selection-end-column="21" />
+        <state relative-caret-position="-732">
+          <caret line="167" column="47" lean-forward="true" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#3509#3622#0" />
+            <element signature="e#3216#4454#0" />
           </folding>
         </state>
       </provider>
