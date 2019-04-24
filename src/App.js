@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import data_source from './films.json'
-import {Table, Form, message, LocaleProvider, Input, Button, Icon, Col} from 'antd';
+import {Table, Form, message, LocaleProvider, Input, Button, Icon} from 'antd';
 import {CenterLayout} from "./layout/center-layout";
 import {FixedLayout} from "./layout/fixed-layout";
 import {FixedRow} from "./layout/fixed-row";
@@ -68,7 +68,7 @@ class App extends Component {
         this.state = {
             actor: [],
             data: [],
-            filtervalue:'',
+            filtervalue: '',
             loadDown: false,
             columns: [
                 {
@@ -174,7 +174,9 @@ class App extends Component {
                         for (const i of text) {
                             // console.log(i);
                             // eslint-disable-next-line
-                            q.push(<a onClick={()=>{this.filterit(i)}}>{i} </a>);
+                            q.push(<a onClick={() => {
+                                this.filterit(i)
+                            }}>{i} </a>);
                             // console.log((q))
                         }
                         return q
@@ -197,10 +199,12 @@ class App extends Component {
             ]
         }
     }
+
     filterit = (value) => {
         console.log(value);
-        this.setState({filtervalue:value})
+        this.setState({filtervalue: value})
     };
+
     get_films_source() {
         if (data_source) {
             message.success('数据读取成功');
@@ -216,34 +220,31 @@ class App extends Component {
 
     componentDidMount() {
         this.get_films_source();
-        this.setState({loadDown:true})
+        this.setState({loadDown: true})
     }
 
 
     render() {
         return (
-            <FixedLayout>
-                <FixedRow>
-                    <Col>
-                        <LocaleProvider locale={zh_CN}>
-                            <CenterLayout span={18}>
-                                <Form>
-                                    <Form.Item>
-                                        <h1 className={'text-align-center font-size-35px'}>这里是标题</h1>
-                                    </Form.Item>
-                                    {this.state.loadDown ?
-                                        (
-                                    <Form.Item>
-                                        <Table columns={this.state.columns} dataSource={this.state.data}
-                                               pagination={{pageSize: 10, showSizeChanger: true}}/>
-                                    </Form.Item>
-                                        ) : null}
-                                </Form>
-                            </CenterLayout>
-                        </LocaleProvider>
-                    </Col>
-                </FixedRow>
-            </FixedLayout>
+            <LocaleProvider locale={zh_CN}>
+                <FixedLayout>
+                    <FixedRow>
+
+                        <CenterLayout span={18}>
+                            <Form>
+                                {this.state.loadDown ?
+                                    (
+                                        <Form.Item>
+                                            <Table columns={this.state.columns} dataSource={this.state.data}
+                                                   pagination={{pageSize: 10, showSizeChanger: true}}/>
+                                        </Form.Item>
+                                    ) : null}
+                            </Form>
+                        </CenterLayout>
+
+                    </FixedRow>
+                </FixedLayout>
+            </LocaleProvider>
 
         );
     }
