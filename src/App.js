@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import data_source from './films.json'
-import {Table, Form, message, LocaleProvider, Input, Button, Icon} from 'antd';
+import {Table, Form, message, LocaleProvider, Input, Button, Icon, Modal, PageHeader, Layout, Menu, Breadcrumb} from 'antd';
 import {CenterLayout} from "./layout/center-layout";
 import {FixedLayout} from "./layout/fixed-layout";
 import {FixedRow} from "./layout/fixed-row";
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
+const { Header, Content, Footer } = Layout;
 
 class App extends Component {
     getColumnSearchProps = (dataIndex) => (
@@ -70,33 +71,40 @@ class App extends Component {
             data: [],
             filtervalue: '',
             loadDown: false,
+            modal_visibal: false,
+            modal_source: '',
             columns: [
                 {
                     title: '',
                     dataIndex: 'poster',
-                    key: '_id',
+                    key: 'key',
+                    width: 150,
                     // eslint-disable-next-line
                     render: text => <a><img src={text} width={75} alt={''} referrerPolicy={'never'}/></a>
                 }, {
                     title: '电影名',
                     dataIndex: 'title',
-                    // key: '_id',
+                    key: 'title',
+                    width: 200,
                     ...this.getColumnSearchProps('title'),
                     // eslint-disable-next-line
                     render: text => <a href="javascript:">{text}</a>
                 }, {
                     title: '评分',
                     dataIndex: 'rating.average',
-                    // key: 'rating.average',
+                    key: 'rating.average',
+                    width: 80,
                     sorter: (a, b) => a.rating.average - b.rating.average
                 }, {
                     title: '上映时间',
                     dataIndex: 'pubdate[0]',
-                    // key: 'pubdate[0]',
+                    key: 'pubdate[0]',
+                    width: 150,
                 }, {
                     title: '类型',
                     dataIndex: 'genres',
-                    // key: 'genres',
+                    key: 'genres',
+                    width:300,
                     filters: [
                         {
                             text: '纪录片',
@@ -168,14 +176,14 @@ class App extends Component {
                         // console.log(record);
                         return record.genres.indexOf(value) !== -1
                     },
-
+                    // eslint-disable-next-line
                     render: text => {
                         let q = [];
                         for (const i of text) {
                             // console.log(i);
                             // eslint-disable-next-line
-                            q.push(<a onClick={() => {
-                                this.filterit(i)
+                            q.push(<a key={i} onClick={() => {
+                                message.warning('请用上方筛选按钮筛选')
                             }}>{i} </a>);
                             // console.log((q))
                         }
@@ -184,13 +192,13 @@ class App extends Component {
                 }, {
                     title: '主演',
                     dataIndex: 'directors',
-                    // key: 'pubdate[0]',
+                    key: 'directors',
                     render: text => {
                         let q = [];
                         // console.log(typeof(q));
                         for (const i of text) {
                             // eslint-disable-next-line
-                            q.push(<a href="javascript:">{i.name} </a>);
+                            q.push(<a key={i.name} href="javascript:">{i.name} </a>);
                         }
                         return q
                     }
@@ -200,15 +208,24 @@ class App extends Component {
         }
     }
 
-    filterit = (value) => {
-        console.log(value);
-        this.setState({filtervalue: value})
-    };
 
     get_films_source() {
         if (data_source) {
             message.success('数据读取成功');
-            this.setState({data: data_source})
+            let q = [];
+            let x = 0;
+            // console.log(typeof(q));
+            for (const i of data_source) {
+                // eslint-disable-next-line
+                data_source[x]['key'] = x + 1;
+                // console.log(x,data_source[x]);
+                // i.push({key:x});
+                q.push(i);
+                // console.log(q);
+                x++;
+                this.setState({data: q})
+            }
+
             // for(const i in data_source){
             //   console.log(data_source[i])
             // }
@@ -229,19 +246,33 @@ class App extends Component {
             <LocaleProvider locale={zh_CN}>
                 <FixedLayout>
                     <FixedRow>
-
-                        <CenterLayout span={18}>
+                        <PageHeader
+                            // onBack={() => null}
+                            title="Web作业2"
+                            subTitle="电影一览"
+                        />
+                        <CenterLayout span={20}>
                             <Form>
                                 {this.state.loadDown ?
                                     (
                                         <Form.Item>
                                             <Table columns={this.state.columns} dataSource={this.state.data}
-                                                   pagination={{pageSize: 10, showSizeChanger: true}}/>
+                                                   pagination={{pageSize: 10, showSizeChanger: true, pageSizeOptions:[10,20,50,100,200], hideOnSinglePage:true}}
+                                                   scroll={{ x: 900, y: 540 }}/>
                                         </Form.Item>
                                     ) : null}
                             </Form>
                         </CenterLayout>
+                        <Modal visible={this.state.modal_visibal}>
+                            <Form>
+                                <Form.Item>
 
+                                </Form.Item>
+                            </Form>
+                        </Modal>
+                    <Footer style={{ textAlign: 'center' }}>
+                        Copyright ©2019 Created 张智源 1652782
+                    </Footer>
                     </FixedRow>
                 </FixedLayout>
             </LocaleProvider>
