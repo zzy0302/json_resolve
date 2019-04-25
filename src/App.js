@@ -8,7 +8,7 @@ import {FixedLayout} from "./layout/fixed-layout";
 import {FixedRow} from "./layout/fixed-row";
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 // eslint-disable-next-line
-const { Header, Content, Footer } = Layout;
+const {Header, Content, Footer} = Layout;
 
 class App extends Component {
     getColumnSearchProps = (dataIndex) => (
@@ -73,12 +73,17 @@ class App extends Component {
             data: [],
             filtervalue: '',
             loadDown: false,
-            modal_visibal: false,
+            modal_visible: false,
             modal_source: '',
-            modal_name:'',
-            modal_pic:'',
-            modal_casts:[],
-            modal_countries:'',
+            modal_title: '',
+            modal_poster: '',
+            modal_casts: [],
+            modal_countries: '',
+            modal_languages: '',
+            modal_pubdate: '',
+            modal_summary: '',
+            modal_year: '',
+            modal_writers: '',
 
             columns: [
                 {
@@ -96,7 +101,7 @@ class App extends Component {
                     ...this.getColumnSearchProps('title'),
                     // eslint-disable-next-line
                     render: text => <a href="javascript:" onClick={() => {
-                        this.setState({modal_source:text})
+                        this.setState({modal_source: text},()=>{this.modal_search()})
                     }}>{text}</a>
                 }, {
                     title: '评分',
@@ -113,7 +118,7 @@ class App extends Component {
                     title: '类型',
                     dataIndex: 'genres',
                     key: 'genres',
-                    width:300,
+                    width: 200,
                     filters: [
                         {
                             text: '纪录片',
@@ -202,6 +207,8 @@ class App extends Component {
                     title: '导演',
                     dataIndex: 'directors',
                     key: 'directors',
+                    width: 100,
+                    // ...this.getColumnSearchProps('directors'),
                     render: text => {
                         let q = [];
                         // console.log(typeof(q));
@@ -215,6 +222,8 @@ class App extends Component {
                     title: '主演',
                     dataIndex: 'casts',
                     key: 'casts',
+                    width: 200,
+                    // ...this.getColumnSearchProps('casts'),
                     render: text => {
                         let q = [];
                         // console.log(typeof(q));
@@ -229,7 +238,29 @@ class App extends Component {
         }
     }
 
+    modal_search() {
+        for (const i of data_source) {
+            // console.log(this.state.modal_source);
+            // console.log(i);
+            if (i['title']===this.state.modal_source){
+                console.log(i);
+                this.setState({
+                    modal_visible: false,
+                    modal_source: '',
+                    modal_title: i['title'],
+                    modal_poster: i['poster'],
+                    modal_casts: i['poster'],
+                    modal_countries: i['countries'],
+                    modal_languages: i['languages'],
+                    modal_pubdate: i['pubdate'],
+                    modal_summary: i['summary'],
+                    modal_year: i['year'],
+                    modal_writers: i['writers']
+                },()=>{this.setState({modal_visible:true})})
+            }
 
+        }
+    }
     get_films_source() {
         if (data_source) {
             message.success('数据读取成功');
@@ -278,22 +309,27 @@ class App extends Component {
                                     (
                                         <Form.Item>
                                             <Table columns={this.state.columns} dataSource={this.state.data}
-                                                   pagination={{pageSize: 10, showSizeChanger: true, pageSizeOptions:[10,20,50,100,200], hideOnSinglePage:true}}
-                                                   scroll={{ x: 900, y: 540 }}/>
+                                                   pagination={{
+                                                       pageSize: 10,
+                                                       showSizeChanger: true,
+                                                       pageSizeOptions: ['10', '20', '50', '100', '200'],
+                                                       hideOnSinglePage: true
+                                                   }}
+                                                   scroll={{x: 900, y: 540}}/>
                                         </Form.Item>
                                     ) : null}
                             </Form>
                         </CenterLayout>
-                        <Modal visible={this.state.modal_visibal}>
+                        <Modal visible={this.state.modal_visible}>
                             <Form>
                                 <Form.Item>
 
                                 </Form.Item>
                             </Form>
                         </Modal>
-                    <Footer style={{ textAlign: 'center' }}>
-                        Copyright ©2019 Created 张智源 1652782
-                    </Footer>
+                        <Footer style={{textAlign: 'center'}}>
+                            Copyright ©2019 Created 张智源 1652782
+                        </Footer>
                     </FixedRow>
                 </FixedLayout>
             </LocaleProvider>
