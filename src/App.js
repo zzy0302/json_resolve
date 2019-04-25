@@ -92,7 +92,7 @@ class App extends Component {
                     key: 'key',
                     width: 150,
                     // eslint-disable-next-line
-                    render: text => <a><img src={text} width={75} alt={''} referrerPolicy={'never'}/></a>
+                    render: text => <a ><img src={text} width={75} alt={''} referrerPolicy={'never'}/></a>
                 }, {
                     title: '电影名',
                     dataIndex: 'title',
@@ -100,9 +100,9 @@ class App extends Component {
                     width: 200,
                     ...this.getColumnSearchProps('title'),
                     // eslint-disable-next-line
-                    render: text => <a href="javascript:" onClick={() => {
-                        this.setState({modal_source: text},()=>{this.modal_search()})
-                    }}>{text}</a>
+                    render: text => <a href="javascript:"
+                                       onClick={() => {this.setState({modal_source: text},()=>{this.modal_search()})}}
+                    >{text}</a>
                 }, {
                     title: '评分',
                     dataIndex: 'rating.average',
@@ -320,10 +320,15 @@ class App extends Component {
                                     ) : null}
                             </Form>
                         </CenterLayout>
-                        <Modal visible={this.state.modal_visible}>
+                        <Modal visible={this.state.modal_visible}
+                               footer={null}
+                               onCancel={()=>{this.setState({modal_visible:false})}}
+                               closable={false}
+                               destroyOnClose={true}
+                        >
                             <Form>
                                 <Form.Item>
-
+                                    <img src={this.state.modal_poster} width={200} alt={''} referrerPolicy={'never'}/>
                                 </Form.Item>
                             </Form>
                         </Modal>
