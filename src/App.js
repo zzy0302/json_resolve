@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 import data_source from './films.json'
+// eslint-disable-next-line
 import {Table, Form, message, LocaleProvider, Input, Button, Icon, Modal, PageHeader, Layout, Menu, Breadcrumb} from 'antd';
 import {CenterLayout} from "./layout/center-layout";
 import {FixedLayout} from "./layout/fixed-layout";
 import {FixedRow} from "./layout/fixed-row";
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
+// eslint-disable-next-line
 const { Header, Content, Footer } = Layout;
 
 class App extends Component {
@@ -73,6 +75,11 @@ class App extends Component {
             loadDown: false,
             modal_visibal: false,
             modal_source: '',
+            modal_name:'',
+            modal_pic:'',
+            modal_casts:[],
+            modal_countries:'',
+
             columns: [
                 {
                     title: '',
@@ -88,7 +95,9 @@ class App extends Component {
                     width: 200,
                     ...this.getColumnSearchProps('title'),
                     // eslint-disable-next-line
-                    render: text => <a href="javascript:">{text}</a>
+                    render: text => <a href="javascript:" onClick={() => {
+                        this.setState({modal_source:text})
+                    }}>{text}</a>
                 }, {
                     title: '评分',
                     dataIndex: 'rating.average',
@@ -190,7 +199,7 @@ class App extends Component {
                         return q
                     }
                 }, {
-                    title: '主演',
+                    title: '导演',
                     dataIndex: 'directors',
                     key: 'directors',
                     render: text => {
@@ -202,8 +211,20 @@ class App extends Component {
                         }
                         return q
                     }
+                }, {
+                    title: '主演',
+                    dataIndex: 'casts',
+                    key: 'casts',
+                    render: text => {
+                        let q = [];
+                        // console.log(typeof(q));
+                        for (const i of text) {
+                            // eslint-disable-next-line
+                            q.push(<a key={i.name} href="javascript:">{i.name} </a>);
+                        }
+                        return q
+                    }
                 }
-
             ]
         }
     }
