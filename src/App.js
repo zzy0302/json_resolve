@@ -23,6 +23,7 @@ import {FixedLayout} from "./layout/fixed-layout";
 import {FixedRow} from "./layout/fixed-row";
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 /* eslint-disable */
+// eslint-disable-next-line
 const {Header, Content, Footer} = Layout;
 const {Meta} = Card;
 
@@ -84,6 +85,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             actor: [],
             data: [],
@@ -105,6 +107,7 @@ class App extends Component {
             modal_duration: 0,
             average_rating: 0,
             average_duration: 0,
+            table_height:1080,
 
             columns: [
                 {
@@ -261,6 +264,7 @@ class App extends Component {
                 }
             ]
         }
+        this.resize=this.resize.bind(this);
     }
 
     modal_search() {
@@ -298,7 +302,6 @@ class App extends Component {
                     this.setState({modal_visible: true})
                 })
             }
-
         }
     }
 
@@ -340,11 +343,27 @@ class App extends Component {
         }
         // console.log((data_source))
     }
-
+screenChange() {
+    this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
+    console.log('??',this.state.table_height)
+     window.addEventListener('resize', this.resize);
+ }
     componentDidMount() {
+        this.screenChange();
+        console.log(document.body.clientWidth,document.body.clientHeight)
+
         this.get_films_source();
         this.setState({loadDown: true})
     }
+
+    componentWillUnmount() {       
+    window.removeEventListener('resize',this.resize);
+}
+
+resize(){
+    this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
+    console.log(document.body.clientWidth,document.body.clientHeight)
+}
 
     render() {
         return (
@@ -368,7 +387,7 @@ class App extends Component {
                                                        pageSizeOptions: ['10', '20', '50', '100', '200'],
                                                        hideOnSinglePage: true
                                                    }}
-                                                   scroll={{x: 900, y: 540}}/>
+                                                   scroll={{y: this.state.table_height}}/>
                                         </Form.Item>
                                     ) : null}
                             </Form>
@@ -421,27 +440,29 @@ class App extends Component {
                                                 bordered={false}>
                                             </Card>)}
                                         &nbsp;
-                                        {this.state.modal_rating > 1 ? (
+                                        {this.state.modal_duration > 10 ? (
                                                 <Card
-                                                    title={"持续时长:" + this.state.modal_duration}
+                                                    title={"持续时长:" + this.state.modal_duration+'min'}
                                                     bordered={false}>
-                                                    {this.state.modal_duration - this.state.average_duration > 0 && this.state.modal_duration > 1 ? (
+                                                    {this.state.modal_duration - this.state.average_duration > 0 ? (
                                                         <Statistic
                                                             title={"高于平均时长"}
                                                             value={this.state.modal_duration - this.state.average_duration}
-                                                            precision={3}
+                                                            precision={1}
                                                             valueStyle={{color: '#3f8600'}}
                                                             prefix={<Icon type="arrow-up"/>}
+                                                            suffix="min"
                                                         />) : <Statistic
-                                                        title={"低于平均时常"}
+                                                        title={"低于平均时长"}
                                                         value={this.state.modal_duration - this.state.average_duration}
-                                                        precision={3}
+                                                        precision={1}
                                                         valueStyle={{color: '#cf1322'}}
                                                         prefix={<Icon type="arrow-down"/>}
+                                                        suffix="min"
                                                     />}
                                                 </Card>) :
                                             (<Card
-                                                    title={'暂无时长'}
+                                                    title={'暂无时长信息'}
                                                     bordered={false}>
                                                 </Card>
                                             )}

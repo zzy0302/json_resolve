@@ -5,9 +5,13 @@
   "dependencies": {
     "antd": "^3.16.3",
     "axios": "^0.18.0",
+    "core-js": "^3.0.1",
+    "dimensions": "^0.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "topo": "^3.0.3",
+    "typescript": "^3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
