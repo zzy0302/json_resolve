@@ -3,20 +3,20 @@ import './App.css';
 import data_source from './films.json'
 // eslint-disable-next-line
 import {
-    Table,
-    Form,
-    message,
-    LocaleProvider,
-    Input,
     Button,
+    Card,
+    Col,
+    Form,
     Icon,
+    Input,
+    Layout,
+    LocaleProvider,
+    message,
     Modal,
     PageHeader,
-    Layout,
     Row,
-    Col,
-    Card,
-    Statistic
+    Statistic,
+    Table
 } from 'antd';
 import {CenterLayout} from "./layout/center-layout";
 import {FixedLayout} from "./layout/fixed-layout";
@@ -24,11 +24,16 @@ import {FixedRow} from "./layout/fixed-row";
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 /* eslint-disable */
 // eslint-disable-next-line
-const {Header, Content, Footer} = Layout;
+const {Footer} = Layout;
 const {Meta} = Card;
 
-class App extends Component {
+function deepClone(obj) {
+    let _obj = JSON.stringify(obj);
+    return JSON.parse(_obj);
+}
 
+
+class App extends Component {
     getColumnSearchProps = (dataIndex) => ({
         filterDropdown: ({
                              setSelectedKeys, selectedKeys, confirm, clearFilters,
@@ -85,8 +90,9 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
+            real_data_source: data_source,
             actor: [],
             data: [],
             filter_value: '',
@@ -107,21 +113,26 @@ class App extends Component {
             modal_duration: 0,
             average_rating: 0,
             average_duration: 0,
-            table_height:1080,
+            table_height: document.body.clientHeight - 270,
 
             columns: [
                 {
                     title: '',
                     dataIndex: 'poster',
                     key: 'key',
-                    width: 150,
+                    width: 180,
                     // eslint-disable-next-line
-                    render: text => <a><img src={text} width={75} alt={''} referrerPolicy={'never'}/></a>
+                    render: text => <a><img src={text} width={75} alt={''} referrerPolicy={'never'}
+                                            onClick={() => {
+                                                this.setState({modal_source: text}, () => {
+                                                    this.modal_search()
+                                                })
+                                            }}/></a>
                 }, {
                     title: '电影名',
                     dataIndex: 'title',
                     key: 'title',
-                    width: 200,
+                    width: 250,
                     ...this.getColumnSearchProps('title'),
                     // eslint-disable-next-line
                     render: text => <a href="javascript:"
@@ -213,21 +224,16 @@ class App extends Component {
                             value: '古装',
                         },],
                     onFilter: (value, record) => {
-                        // console.log(value);
-                        // this.setState({filtervalue:value});
-                        // console.log(record);
                         return record.genres.indexOf(value) !== -1
                     },
                     // eslint-disable-next-line
                     render: text => {
                         let q = [];
                         for (const i of text) {
-                            // console.log(i);
                             // eslint-disable-next-line
                             q.push(<a key={i} onClick={() => {
                                 message.warning('请用上方筛选按钮筛选')
                             }}>{i} </a>);
-                            // console.log((q))
                         }
                         return q
                     }
@@ -235,51 +241,28 @@ class App extends Component {
                     title: '导演',
                     dataIndex: 'directors',
                     key: 'directors',
-                    width: 100,
-                    // ...this.getColumnSearchProps('directors'),
-                    render: text => {
-                        let q = [];
-                        // console.log(typeof(q));
-                        for (const i of text) {
-                            // eslint-disable-next-line
-                            q.push(<a key={i.name} href="javascript:">{i.name} </a>);
-                        }
-                        return q
-                    }
+                    width: 80,
+                    ...this.getColumnSearchProps('directors'),
                 }, {
                     title: '主演',
                     dataIndex: 'casts',
                     key: 'casts',
-                    width: 200,
-                    // ...this.getColumnSearchProps('casts'),
-                    render: text => {
-                        let q = [];
-                        // console.log(typeof(q));
-                        for (const i of text) {
-                            // eslint-disable-next-line
-                            q.push(<a key={i.name} href="javascript:">{i.name} </a>);
-                        }
-                        return q
-                    }
+                    width: 180,
+                    ...this.getColumnSearchProps('casts'),
                 }
             ]
-        }
-        this.resize=this.resize.bind(this);
+        };
+        this.resize = this.resize.bind(this);
     }
 
     modal_search() {
-        for (const i of data_source) {
-            // console.log(this.state.modal_source);
-            // console.log(i);
-            if (i['title'] === this.state.modal_source) {
-                // console.log(i);
+        for (const i of this.state.real_data_source) {
+            if (i['title'] === this.state.modal_source || i['poster'] === this.state.modal_source) {
                 let writers = '', casts = '';
                 for (const t of i['writers']) {
-                    // console.log(t);
                     writers += '<p>' + t.name + '</>'
                 }
                 for (const t of i['casts']) {
-                    // console.log(t);
                     casts += '<p>' + t.name + '</>'
                 }
                 this.setState({
@@ -291,14 +274,13 @@ class App extends Component {
                     modal_countries: i['countries'],
                     modal_languages: i['languages'],
                     modal_pubdate: i['pubdate'],
-                    modal_summary: i['summary'],
+                    modal_summary: '    '+i['summary'],
                     modal_year: i['year'],
                     modal_writers: writers,
                     modal_directors: i['directors'][0].name,
                     modal_rating: Number(i['rating']['average']),
                     modal_duration: Number(i['duration'])
                 }, () => {
-                    // console.log(this.state);
                     this.setState({modal_visible: true})
                 })
             }
@@ -307,63 +289,80 @@ class App extends Component {
 
     get_films_source() {
         if (data_source) {
-            message.success('数据读取成功');
-            let data = [];
-            let x = 0;
-            let average_rating = 0, ratingcut = 0;
-            let average_duration = 0, durationcut = 0;
-            // console.log(typeof(q));
-            for (const i of data_source) {
-                // eslint-disable-next-line
-                data_source[x]['key'] = x + 1;
-                // console.log(x,data_source[x]);
-                // i.push({key:x});
-                if (!isNaN(Number(data_source[x]['rating']['average']))) {
-                    average_rating += Number(data_source[x]['rating']['average']);
-                    ratingcut += 1
+            this.setState({real_data_source: deepClone(data_source)}, () => {
+                message.success('数据读取成功');
+                let data = [];
+                let x = 0;
+                let average_rating = 0, rating_count = 0;
+                let average_duration = 0, duration_count = 0;
+                for (const i of data_source) {
+                    data_source[x]['key'] = x + 1;
+                    let q = [];
+                    for (const i of data_source[x]['directors']) {
+                        q.push(i.name);
+                    }
+                    data_source[x]['directors'] = q.join('  ');
+                    let p = [];
+                    for (const i of data_source[x]['casts']) {
+                        p.push(i.name);
+                    }
+                    data_source[x]['casts'] = p.join('  ');
+                    if (!isNaN(Number(data_source[x]['rating']['average']))) {
+                        average_rating += Number(data_source[x]['rating']['average']);
+                        rating_count += 1
+                    }
+                    if (!isNaN(Number(data_source[x]['duration']))) {
+                        average_duration += Number(data_source[x]['duration']);
+                        duration_count += 1
+                    }
+                    data.push(i);
+                    x++;
                 }
-                if (!isNaN(Number(data_source[x]['duration']))) {
-                    average_duration += Number(data_source[x]['duration']);
-                    durationcut += 1
-                }
-                data.push(i);
-                // console.log(q);
-                // console.log(x,average_duration,average_rating);
-                x++;
-            }
-            average_rating /= ratingcut;
-            average_duration /= durationcut;
-            this.setState({data, average_duration, average_rating})
-
-            // for(const i in data_source){
-            //   console.log(data_source[i])
-            // }
+                average_rating /= rating_count;
+                average_duration /= duration_count;
+                this.setState({data, average_duration, average_rating}, () => {
+                    this.setState({loadDown: true})
+                })
+            })
         } else {
             message.error('数据读取失败')
         }
-        // console.log((data_source))
     }
-screenChange() {
-    this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
-    // console.log('??',this.state.table_height)
-     window.addEventListener('resize', this.resize);
- }
+
+    screenChange() {
+        window.addEventListener('resize', this.resize);
+    }
+
     componentDidMount() {
+        console.log(
+            '这里是1652702 张智源\n' +
+            '本项目基于React,使用ant.design组件完成\n' +
+            '本项目遵循MIT开源协议,详见LICENSE\n' +
+            'Github:https://github.com/zzy0302/json_resolve' +
+            '点击首栏:\n' +
+            '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
+            '点击电影海报或者电影名称可查看详情\n' +
+            '点击外部元素可关闭电影详情\n' +
+            '下方分页可点击\'···\'跳转至受显示最大限制的下一页\n' +
+            '可点击右下角菜单,选择一页展示多少条目\n' +
+            '加入了页面大小自适应,此部分使用原生js完成,没有轮子自己造!\n' +
+            '源Json文件的部分图片链接由于豆瓣原因已失效,已修复\n' +
+            '来自看到红字不消除不舒服星人制作\n' +
+            '助教大大给个满呗QvQ'
+        );
         this.screenChange();
-        // console.log(document.body.clientWidth,document.body.clientHeight)
-
-        this.get_films_source();
-        this.setState({loadDown: true})
+        this.get_films_source()
     }
 
-    componentWillUnmount() {       
-    window.removeEventListener('resize',this.resize);
-}
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resize);
+    }
 
-resize(){
-    this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
-    // console.log(document.body.clientWidth,document.body.clientHeight)
-}
+    resize() {
+        this.setState({table_height: document.body.clientHeight - 270}, () => {
+            this.setState({table_height: document.body.clientHeight - 270})
+        })
+    }
 
     render() {
         return (
@@ -385,7 +384,7 @@ resize(){
                                                        pageSize: 10,
                                                        showSizeChanger: true,
                                                        pageSizeOptions: ['10', '20', '50', '100', '200'],
-                                                       hideOnSinglePage: true
+                                                       // hideOnSinglePage: true
                                                    }}
                                                    scroll={{y: this.state.table_height}}/>
                                         </Form.Item>
@@ -440,9 +439,9 @@ resize(){
                                                 bordered={false}>
                                             </Card>)}
                                         &nbsp;
-                                        {this.state.modal_duration > 10 ? (
+                                        {this.state.modal_duration > 1 ? (
                                                 <Card
-                                                    title={"持续时长:" + this.state.modal_duration+'min'}
+                                                    title={"持续时长:" + this.state.modal_duration + 'min'}
                                                     bordered={false}>
                                                     {this.state.modal_duration - this.state.average_duration > 0 ? (
                                                         <Statistic
@@ -509,7 +508,7 @@ resize(){
                             </div>
                         </Modal>
                         <Footer style={{textAlign: 'center'}}>
-                            Copyright ©2019 Created by 张智源 1652782
+                            Copyright ©2019 Created by 张智源 1652702
                         </Footer>
                     </FixedRow>
                 </FixedLayout>

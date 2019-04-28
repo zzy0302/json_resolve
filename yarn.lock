@@ -1226,6 +1226,14 @@
   resolved "http://registry.npm.taobao.org/@xtuc/long/download/@xtuc/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha1-XIXWYvdvodNFdXZsXc1mFavNMNg=
 
+MD5@~1.2.0:
+  version "1.2.2"
+  resolved "https://registry.npm.taobao.org/MD5/download/MD5-1.2.2.tgz#d903c8ec5ba223cd2b80432824881d04bb9841c0"
+  integrity sha1-2QPI7FuiI80rgEMoJIgdBLuYQcA=
+  dependencies:
+    charenc ">= 0.0.1"
+    crypt ">= 0.0.1"
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/abab/download/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -2350,6 +2358,11 @@ chardet@^0.7.0:
   resolved "http://registry.npm.taobao.org/chardet/download/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha1-kAlISfCTfy7twkJdDSip5fDLrZ4=
 
+"charenc@>= 0.0.1":
+  version "0.0.2"
+  resolved "https://registry.npm.taobao.org/charenc/download/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
+  integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
+
 check-types@^7.3.0:
   version "7.4.0"
   resolved "http://registry.npm.taobao.org/check-types/download/check-types-7.4.0.tgz#0378ec1b9616ec71f774931a3c6516fad8c152f4"
@@ -2722,9 +2735,9 @@ core-js@2.6.4:
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-2.6.4.tgz#b8897c062c4d769dd30a0ac5c73976c47f92ea0d"
   integrity sha1-uIl8BixNdp3TCgrFxzl2xH+S6g0=
 
-core-js@3.0.1:
+core-js@3.0.1, core-js@^3.0.1:
   version "3.0.1"
-  resolved "http://registry.npm.taobao.org/core-js/download/core-js-3.0.1.tgz#1343182634298f7f38622f95e73f54e48ddf4738"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.0.1.tgz#1343182634298f7f38622f95e73f54e48ddf4738"
   integrity sha1-E0MYJjQpj384Yi+V5z9U5I3fRzg=
 
 core-js@^1.0.0:
@@ -2829,6 +2842,11 @@ cross-spawn@^5.0.1:
     lru-cache "^4.0.1"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+"crypt@>= 0.0.1":
+  version "0.0.2"
+  resolved "https://registry.npm.taobao.org/crypt/download/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
+  integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
 
 crypto-browserify@^3.11.0:
   version "3.12.0"
@@ -3291,6 +3309,15 @@ diffie-hellman@^5.0.0:
     bn.js "^4.1.0"
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
+
+dimensions@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npm.taobao.org/dimensions/download/dimensions-0.1.0.tgz#e0db013ad204b7f7b382df43f9888b20be6544f4"
+  integrity sha1-4NsBOtIEt/ezgt9D+YiLIL5lRPQ=
+  dependencies:
+    MD5 "~1.2.0"
+    image-size "~0.2.1"
+    wget "0.0.1"
 
 dir-glob@2.0.0:
   version "2.0.0"
@@ -4700,6 +4727,11 @@ hoek@4.x.x:
   resolved "http://registry.npm.taobao.org/hoek/download/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
   integrity sha1-ljRQKqEsRF3Vp8VzS1cruHOKrLs=
 
+hoek@6.x.x:
+  version "6.1.3"
+  resolved "https://registry.npm.taobao.org/hoek/download/hoek-6.1.3.tgz#73b7d33952e01fe27a38b0457294b79dd8da242c"
+  integrity sha1-c7fTOVLgH+J6OLBFcpS3ndjaJCw=
+
 hoist-non-react-statics@^2.3.1:
   version "2.5.5"
   resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.5.5.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fhoist-non-react-statics%2Fdownload%2Fhoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
@@ -4917,6 +4949,11 @@ ignore@^4.0.6:
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/ignore/download/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=
+
+image-size@~0.2.1:
+  version "0.2.5"
+  resolved "https://registry.npm.taobao.org/image-size/download/image-size-0.2.5.tgz#7cea13f49c191319722fadd961b9f30363eec88f"
+  integrity sha1-fOoT9JwZExlyL63ZYbnzA2PuyI8=
 
 immer@1.10.0:
   version "1.10.0"
@@ -10188,6 +10225,13 @@ topo@2.x.x:
   dependencies:
     hoek "4.x.x"
 
+topo@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npm.taobao.org/topo/download/topo-3.0.3.tgz#d5a67fb2e69307ebeeb08402ec2a2a6f5f7ad95c"
+  integrity sha1-1aZ/suaTB+vusIQC7Coqb1962Vw=
+  dependencies:
+    hoek "6.x.x"
+
 tough-cookie@^2.3.3, tough-cookie@^2.3.4:
   version "2.5.0"
   resolved "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
@@ -10253,6 +10297,11 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+tunnel@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npm.taobao.org/tunnel/download/tunnel-0.0.2.tgz#f23bcd8b7a7b8a864261b2084f66f93193396334"
+  integrity sha1-8jvNi3p7ioZCYbIIT2b5MZM5YzQ=
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "http://registry.npm.taobao.org/tweetnacl/download/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
@@ -10277,6 +10326,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@^3.4.5:
+  version "3.4.5"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
+  integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
@@ -10744,6 +10798,13 @@ websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "http://registry.npm.taobao.org/websocket-extensions/download/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
   integrity sha1-XS/yKXcAPsaHpLhwc9+7rBRszyk=
+
+wget@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npm.taobao.org/wget/download/wget-0.0.1.tgz#8bb81af0b8e60b5df262d3c81e5737e1f4931e53"
+  integrity sha1-i7ga8LjmC13yYtPIHlc34fSTHlM=
+  dependencies:
+    tunnel "0.0.2"
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3:
   version "1.0.5"
