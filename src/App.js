@@ -345,12 +345,12 @@ class App extends Component {
     }
 screenChange() {
     this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
-    console.log('??',this.state.table_height)
+    // console.log('??',this.state.table_height)
      window.addEventListener('resize', this.resize);
  }
     componentDidMount() {
         this.screenChange();
-        console.log(document.body.clientWidth,document.body.clientHeight)
+        // console.log(document.body.clientWidth,document.body.clientHeight)
 
         this.get_films_source();
         this.setState({loadDown: true})
@@ -362,7 +362,7 @@ screenChange() {
 
 resize(){
     this.setState({table_height:document.body.clientHeight-270},() =>{this.setState({table_height:document.body.clientHeight-270})})
-    console.log(document.body.clientWidth,document.body.clientHeight)
+    // console.log(document.body.clientWidth,document.body.clientHeight)
 }
 
     render() {
