@@ -205,12 +205,12 @@
       <workItem from="1555913589510" duration="9619000" />
       <workItem from="1556191906151" duration="14492000" />
       <workItem from="1556451007881" duration="351000" />
-      <workItem from="1556451399828" duration="5611000" />
+      <workItem from="1556451399828" duration="5670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52363000" />
+    <option name="totallyTimeSpent" value="52422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -222,7 +222,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2614458" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2614458" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
