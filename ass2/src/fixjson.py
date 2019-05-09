@@ -1,27 +1,39 @@
 #fixjson.py
 import os
+import re
 import json
 import time
+from lxml import etree 
+import random
 import requests
 import threading
-import download_img
-f = open('films.json','r')
-l = f.read()
-j = json.loads(l)
-# headers={"Host":"www.douban.com",\
-#         "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0",\
-#         "Accept-Language":"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",\
-#         "Accept-Encoding":"gzip, deflate",\
-#         "Connection":"keep-alive"}
-for i in range(len(j)):
-    time.sleep(3)
-    # url = i['poster']
-    # print(url)
-    try:
-        r = requests.get(j[i]['poster'])
-        r.raise_for_status()
-    except Exception as e:
-        print(i,j[i]['poster'])
+# import download_img
+heads = { 'Connection': 'Keep-Alive','Accept': 'text/html, application/xhtml+xml, */*','Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3','Accept-Encoding': 'gzip, deflate','User-Agent': 'Mozilla/6.1 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'}
+with open('films.json','r',encoding='UTF-8') as f:
+    l = f.read()
+    j = json.loads(l)
+    # print(j[0])
+    for i in range(len(j)):
+        time.sleep(random.random())
+        try:
+            r = requests.get(j[i]['poster'])
+            r.raise_for_status()
+        except Exception as e:
+            try:
+                r = requests.get('https://movie.douban.com/subject/' + j[i]['_id'],headers=heads)
+                # html = etree.HTML(str(r.content))
+                html = etree.parse(r.content)
+                print("?")
+                result = html.xpath('//img')
+                # with open ('html.txt','w+') as nf:
+                #     nf.write(html)
+
+                # img_url = html.xpath('nbgnbg')
+                print(result)
+                # img = re.findall('<img(.*?)(src)=\"(?!.*?logo).*',html,re.S|re.M)
+                # print(r.content)
+            except Exception as e:
+                print(e)
     # print(r.raise_for_status()==None)
     # if i['title']=='异形大战银河猎人 Alien vs. Hunter':
     #     url = i['poster']
