@@ -13,12 +13,13 @@ f = open('qwq.json','r',encoding='UTF-8')
 l = f.read()
 j = json.loads(l)
 f.close()
-start_heap=300
-thread_number=5
+start_heap=2000
+max_heap=4000
+thread_number=10
 thread_list=[]
 def foo(q):
     global j
-    for i in list(range(start_heap,len(j)))[q::thread_number]:
+    for i in list(range(start_heap,max_heap))[q::thread_number]:
         print('Now on',i)
         try:
             r = requests.get(j[i]['poster'])
@@ -30,6 +31,7 @@ def foo(q):
                 r = requests.get('https://movie.douban.com/subject/' + j[i]['_id'],headers=heads)
                 html = BeautifulSoup(r.content,'lxml')
                 j[i]['poster'] = html.find('img', {'rel':'v:image'})['src']
+                print('Done',i)
             except Exception as e:
                 print(e)
 for i in list(range(thread_number)):
@@ -60,8 +62,9 @@ for t in thread_list:
 #     if (i + 1) % 100 == 0:
 #         print('Saving...',i)
 
-
+print('Saving...',max_heap)
 with open ('new.json','w+') as newf:
     newf.writelines(json.dumps(j))
 os.remove('qwq.json')
 os.rename('new.json', 'qwq.json')
+print('Saved')
