@@ -13,9 +13,9 @@ f = open('qwq.json','r',encoding='UTF-8')
 l = f.read()
 j = json.loads(l)
 f.close()
-start_heap=2000
-max_heap=4000
-thread_number=10
+start_heap=0
+max_heap=10000
+thread_number=5
 thread_list=[]
 def foo(q):
     global j

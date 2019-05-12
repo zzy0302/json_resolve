@@ -321,6 +321,7 @@ class App extends Component {
                 average_rating /= rating_count;
                 average_duration /= duration_count;
                 this.setState({data, average_duration, average_rating}, () => {
+                    console.log(this.state.data)
                     this.setState({loadDown: true})
                 })
             })
@@ -338,7 +339,7 @@ class App extends Component {
             '这里是1652702 张智源\n' +
             '本项目基于React,使用ant.design组件完成\n' +
             '本项目遵循MIT开源协议,详见LICENSE\n' +
-            'Github:https://github.com/zzy0302/json_resolve' +
+            'Github:https://github.com/zzy0302/json_resolve\n' +
             '点击首栏:\n' +
             '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
             '点击电影海报或者电影名称可查看详情\n' +
