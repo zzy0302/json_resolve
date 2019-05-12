@@ -22,3 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+
+# big JSON
+/ass2/src/qwq.json
+/ass2/src/films.json
+/ass1/src/films.json
