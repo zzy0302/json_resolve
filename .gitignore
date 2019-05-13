@@ -28,4 +28,5 @@ yarn-error.log*
 # big JSON
 /ass2/src/qwq.json
 /ass2/src/films.json
+/ass2/src/insert.sql
 /ass1/src/films.json
