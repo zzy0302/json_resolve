@@ -19,9 +19,9 @@ drop table if exists filmstable;
 create table filmstable
 (
    movie_key            int auto_increment,
-   movie_name           varchar(50),
+   movie_name           varchar(100),
    movie_id             int,
-   movie_poster         varchar(50),
+   movie_poster         varchar(500),
    movie_casts          varchar(255),
    movie_countries      varchar(50),
    movie_directors      varchar(50),
