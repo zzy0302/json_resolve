@@ -9,6 +9,7 @@ try:
     db = pymysql.connect("localhost","webass3","zheshimima","webdb" )
     cursor = db.cursor()
     for i in range(len(j)):
+        j[i]['_id'] = int(j[i]['_id'])
         j[i]['directors'] = j[i]['directors'][i]['name']
         j[i]['casts'] = '  '.join([i['name'] for i in j[i]['casts']])
         j[i]['countries'] = j[i]['countries'][i]
@@ -23,7 +24,7 @@ try:
         cursor.execute('insert into filmstable ( movie_key, movie_name, movie_id, movie_poster, movie_casts, movie_countries, \
                         movie_directors, movie_duration, movie_genres, movie_languages, movie_pubdate, movie_rating, \
                         movie_summary, movie_year )  values ( %s, %s, %d, %s, %s, %s, %s, %d, %s, %s, %s, %d, %s, %s)',\
-                        [,j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
+                        [None,j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
                         j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year']])
     db.commit()
     db.close()
