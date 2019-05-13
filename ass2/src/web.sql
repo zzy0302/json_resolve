@@ -29,7 +29,7 @@ create table filmstable
    movie_genres         varchar(50),
    movie_languages      varchar(50),
    movie_pubdate        varchar(50),
-   movie_rating         int,
+   movie_rating         float,
    movie_summary        varchar(255),
    movie_year           varchar(50),
    primary key (movie_key)
