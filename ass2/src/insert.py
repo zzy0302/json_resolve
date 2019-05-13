@@ -8,7 +8,7 @@ f.close()
 try:
     db = pymysql.connect("localhost","webass3","zheshimima","webdb" )
     cursor = db.cursor()
-    for i in range(len(j)):
+    for i in range(1):
         j[i]['title'] = j[i]['title'].encode('utf-8')
         j[i]['_id'] = int(j[i]['_id'])
         j[i]['directors'] = j[i]['directors'][i]['name'].encode('utf-8')
@@ -21,6 +21,7 @@ try:
         j[i]['rating'] = float(j[i]['rating']['average'])
         j[i]['summary'] = j[i]['summary'].encode('utf-8')
         j[i]['year'] = j[i]['year'].encode('utf-8')
+        print(j[0])
         # print(j[i], end = '\n')
         # print(j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
         #     j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year'])
