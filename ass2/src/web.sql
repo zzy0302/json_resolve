@@ -1,6 +1,6 @@
 create user 'webass3'@'%' identified by 'zheshimima';
 
-grant all privileges on *.* to 'xiezixuan'@'%';
+grant all privileges on *.* to 'webass3'@'%';
 
 flush privileges;
 
@@ -18,10 +18,10 @@ drop table if exists filmstable;
 /*==============================================================*/
 create table filmstable
 (
-   key                  int auto_increment,
-   movie_name           varchar(50) not null,
-   movie_id             int not null,
-   movie_poster         varchar(50) not null,
+   movie_key            int auto_increment,
+   movie_name           varchar(50),
+   movie_id             int,
+   movie_poster         varchar(50),
    movie_casts          varchar(255),
    movie_countries      varchar(50),
    movie_directors      varchar(50),
@@ -32,6 +32,6 @@ create table filmstable
    movie_rating         int,
    movie_summary        varchar(255),
    movie_year           varchar(50),
-   primary key (key)
+   primary key (movie_key)
 )
 auto_increment = 1;
