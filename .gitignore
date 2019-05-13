@@ -2,7 +2,7 @@
 
 # dependencies
 /ass1/node_modules
-/ass2/node_modules
+/ass2/front_end/node_modules
 /.pnp
 .pnp.js
 
@@ -26,7 +26,7 @@ yarn-error.log*
 
 
 # big JSON
-/ass2/src/qwq.json
-/ass2/src/films.json
-/ass2/src/insert.sql
+/ass2/data_insert_mysql/qwq.json
+/ass2/data_insert_mysql/films.json
+/ass2/data_insert_mysql/insert.sql
 /ass1/src/films.json
