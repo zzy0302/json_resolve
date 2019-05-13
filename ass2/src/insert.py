@@ -11,7 +11,7 @@ f = open('insert.sql','w+',encoding='UTF-8')
     # cursor = db.cursor()
 for i in range(len(j)):
     # print(j[i])
-    j[i]['title'] = j[i]['title']
+    j[i]['title'] = j[i]['title'].replace('"','\\"').replace("'","\\'")
     j[i]['_id'] = int(j[i]['_id'])
     if j[i]['directors']:
         # print('?')
@@ -31,11 +31,11 @@ for i in range(len(j)):
     else:
         j[i]['duration'] = ''
     if j[i]['genres']:
-        j[i]['genres'] = ' '.join([x for x in j[i]['genres']])
+        j[i]['genres'] = ' '.join([x for x in j[i]['genres']]).replace('"','\\"').replace("'","\\'")
     else:
         j[i]['genres'] = ''
     if j[i]['languages']:
-        j[i]['languages'] = j[i]['languages'][0]
+        j[i]['languages'] = j[i]['languages'][0].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['languages'] = ''
     if j[i]['pubdate']:
@@ -43,7 +43,7 @@ for i in range(len(j)):
     else:
         j[i]['pubdate'] = ''
     if j[i]['rating']['average']:
-        j[i]['rating'] = j[i]['rating']['average']
+        j[i]['rating'] = j[i]['rating']['average'].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['rating'] = ''
     if j[i]['summary']:
@@ -51,7 +51,7 @@ for i in range(len(j)):
     else:
         j[i]['summary'] = ''
     if j[i]['year']:
-        j[i]['year'] = j[i]['year']
+        j[i]['year'] = j[i]['year'].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['year'] = ''
     print(i)
