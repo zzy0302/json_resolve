@@ -22,7 +22,7 @@ create table filmstable
    movie_name           varchar(100),
    movie_id             int,
    movie_poster         varchar(500),
-   movie_casts          varchar(255),
+   movie_casts          varchar(500),
    movie_countries      varchar(50),
    movie_directors      varchar(50),
    movie_duration       varchar(50),

@@ -15,19 +15,19 @@ for i in range(len(j)):
     j[i]['_id'] = int(j[i]['_id'])
     if j[i]['directors']:
         # print('?')
-        j[i]['directors'] = j[i]['directors'][0]['name']
+        j[i]['directors'] = j[i]['directors'][0]['name'].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['directors'] = ''
     if j[i]['casts']:
-        j[i]['casts'] = '  '.join([x['name'] for x in j[i]['casts']])
+        j[i]['casts'] = '  '.join([x['name'] for x in j[i]['casts']]).replace('"','\\"').replace("'","\\'")
     else:
         j[i]['casts'] = ''
     if j[i]['countries']:
-        j[i]['countries'] = j[i]['countries'][0]
+        j[i]['countries'] = j[i]['countries'][0].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['countries'] = ''
     if j[i]['duration']:
-        j[i]['duration'] = (j[i]['duration'])
+        j[i]['duration'] = (j[i]['duration']).replace('"','\\"').replace("'","\\'")
     else:
         j[i]['duration'] = ''
     if j[i]['genres']:
@@ -39,7 +39,7 @@ for i in range(len(j)):
     else:
         j[i]['languages'] = ''
     if j[i]['pubdate']:
-        j[i]['pubdate'] = j[i]['pubdate'][0]
+        j[i]['pubdate'] = j[i]['pubdate'][0].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['pubdate'] = ''
     if j[i]['rating']['average']:
@@ -47,7 +47,7 @@ for i in range(len(j)):
     else:
         j[i]['rating'] = ''
     if j[i]['summary']:
-        j[i]['summary'] = j[i]['summary']
+        j[i]['summary'] = j[i]['summary'].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['summary'] = ''
     if j[i]['year']:
