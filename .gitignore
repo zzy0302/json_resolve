@@ -3,6 +3,7 @@
 # dependencies
 /ass1/node_modules
 /ass2/front_end/node_modules
+/ass2/back_end/node_modules
 /.pnp
 .pnp.js
 
