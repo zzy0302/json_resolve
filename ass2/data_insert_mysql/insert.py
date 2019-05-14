@@ -1,5 +1,4 @@
 import json
-import pymysql
 f = open('qwq.json','r',encoding='UTF-8')
 l = f.read()
 j = json.loads(l)

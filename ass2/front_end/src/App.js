@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import {serverConfig} from "../config";
+import {serverConfig} from "./config";
 import axios from "axios";
 // eslint-disable-next-line
 import {
@@ -85,9 +85,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            real_data_source: data_source,
             actor: [],
             data: [],
             filter_value: '',
@@ -139,14 +137,14 @@ class App extends Component {
                     >{text}</a>
                 }, {
                     title: '评分',
-                    dataIndex: 'rating.average',
-                    key: 'rating.average',
+                    dataIndex: 'rating',
+                    key: 'rating',
                     width: 80,
-                    sorter: (a, b) => a.rating.average - b.rating.average
+                    sorter: (a, b) => a.rating - b.rating
                 }, {
                     title: '上映时间',
-                    dataIndex: 'pubdate[0]',
-                    key: 'pubdate[0]',
+                    dataIndex: 'pubdate',
+                    key: 'pubdate',
                     width: 150,
                 }, {
                     title: '类型',
@@ -222,16 +220,13 @@ class App extends Component {
                         return record.genres.indexOf(value) !== -1
                     },
                     // eslint-disable-next-line
-                    render: text => {
-                        let q = [];
-                        for (const i of text) {
-                            // eslint-disable-next-line
-                            q.push(<a key={i} onClick={() => {
-                                message.warning('请用上方筛选按钮筛选')
-                            }}>{i} </a>);
-                        }
-                        return q
-                    }
+                    // render: text => {
+                    //         // eslint-disable-next-line
+                    //         <a key={text} onClick={() => {
+                    //             message.warning('请用上方筛选按钮筛选')
+                    //         }}>{text}</a>;
+                    //     }
+                     
                 }, {
                     title: '导演',
                     dataIndex: 'directors',
@@ -272,8 +267,8 @@ class App extends Component {
                     modal_summary: '    '+i['summary'],
                     modal_year: i['year'],
                     modal_writers: writers,
-                    modal_directors: i['directors'][0].name,
-                    modal_rating: Number(i['rating']['average']),
+                    modal_directors: i['directors'],
+                    modal_rating: Number(i['rating']),
                     modal_duration: Number(i['duration'])
                 }, () => {
                     this.setState({modal_visible: true})
@@ -281,18 +276,20 @@ class App extends Component {
             }
         }
     }
-
+ 
     get_films_source() {
+        console.log(`${serverConfig.url}/request/films/get`)
         axios
             .post(`${serverConfig.url}/request/films/get`)
             .then((res) => {
-                console.log(res.data);
+                
                 if (res.data.success) {
-                    this.setState({data: res.data}, () => {
+                    this.setState({data: res.data.data}, () => {
                         message.success('数据读取成功');
                         // this.setState({data, average_duration, average_rating}, () => {
-                        //     console.log(this.state.data);
-                        //     this.setState({loadDown: true})
+                            console.log(this.state.data);
+
+                            this.setState({loadDown: true})
                         // })
                     })
                 } else {

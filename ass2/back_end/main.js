@@ -58,7 +58,7 @@ web_server.post('/request/films/get', (req, res) => {
     console.log('[web_server] POST: /request/films/get');
     let connection = mysql.createConnection(dbConnectionInfo);
     let args = req.body;
-    connection.query(`select movie_key, movie_name, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable`, (err, t) => {
+    connection.query(`select movie_key, movie_rating, movie_name, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable`, (err, t) => {
                 if (err) {
                     console.log('Get all films sql error');
                     connection.end();
@@ -67,16 +67,16 @@ web_server.post('/request/films/get', (req, res) => {
                 connection.end();
                 let result = [];
                 t.map((item) => {
-                    console.log(item)
+                  // console.log(item)
                     result.push({
                         key:item.movie_key,
-                        name:item.movie_name,
+                        title:item.movie_name,
                         poster:item.movie_poster,
                         casts:item.movie_casts,
                         directors:item.movie_directors,
                         genres:item.movie_genres,
-                        pubdate:item.movie_pubdate,
-                        year:item.movie_year
+                        pubdate:item.movie_year,
+                        rating:item.movie_rating
                     });
                 });
                 return res.json({
