@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import data_source from './films.json'
+import {serverConfig} from "../config";
+import axios from "axios";
 // eslint-disable-next-line
 import {
     Button,
@@ -26,12 +27,6 @@ import zh_CN from 'antd/lib/locale-provider/zh_CN';
 // eslint-disable-next-line
 const {Footer} = Layout;
 const {Meta} = Card;
-
-function deepClone(obj) {
-    let _obj = JSON.stringify(obj);
-    return JSON.parse(_obj);
-}
-
 
 class App extends Component {
     getColumnSearchProps = (dataIndex) => ({
@@ -256,8 +251,8 @@ class App extends Component {
     }
 
     modal_search() {
-        for (const i of this.state.real_data_source) {
-            if (i['title'] === this.state.modal_source || i['poster'] === this.state.modal_source) {
+        for (const i of this.state.data) {
+            if (i['title'] === this.state.data || i['poster'] === this.state.data) {
                 let writers = '', casts = '';
                 for (const t of i['writers']) {
                     writers += '<p>' + t.name + '</>'
@@ -288,46 +283,22 @@ class App extends Component {
     }
 
     get_films_source() {
-        if (data_source) {
-            this.setState({real_data_source: deepClone(data_source)}, () => {
-                message.success('数据读取成功');
-                let data = [];
-                let x = 0;
-                let average_rating = 0, rating_count = 0;
-                let average_duration = 0, duration_count = 0;
-                for (const i of data_source) {
-                    data_source[x]['key'] = x + 1;
-                    let q = [];
-                    for (const i of data_source[x]['directors']) {
-                        q.push(i.name);
-                    }
-                    data_source[x]['directors'] = q.join('  ');
-                    let p = [];
-                    for (const i of data_source[x]['casts']) {
-                        p.push(i.name);
-                    }
-                    data_source[x]['casts'] = p.join('  ');
-                    if (!isNaN(Number(data_source[x]['rating']['average']))) {
-                        average_rating += Number(data_source[x]['rating']['average']);
-                        rating_count += 1
-                    }
-                    if (!isNaN(Number(data_source[x]['duration']))) {
-                        average_duration += Number(data_source[x]['duration']);
-                        duration_count += 1
-                    }
-                    data.push(i);
-                    x++;
+        axios
+            .post(`${serverConfig.url}/request/films/get`)
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.success) {
+                    this.setState({data: res.data}, () => {
+                        message.success('数据读取成功');
+                        // this.setState({data, average_duration, average_rating}, () => {
+                        //     console.log(this.state.data);
+                        //     this.setState({loadDown: true})
+                        // })
+                    })
+                } else {
+                    message.error('数据读取失败')
                 }
-                average_rating /= rating_count;
-                average_duration /= duration_count;
-                this.setState({data, average_duration, average_rating}, () => {
-                    console.log(this.state.data)
-                    this.setState({loadDown: true})
-                })
             })
-        } else {
-            message.error('数据读取失败')
-        }
     }
 
     screenChange() {
@@ -335,22 +306,22 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log(
-            '这里是1652702 张智源\n' +
-            '本项目基于React,使用ant.design组件完成\n' +
-            '本项目遵循MIT开源协议,详见LICENSE\n' +
-            'Github:https://github.com/zzy0302/json_resolve\n' +
-            '点击首栏:\n' +
-            '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
-            '点击电影海报或者电影名称可查看详情\n' +
-            '点击外部元素可关闭电影详情\n' +
-            '下方分页可点击\'···\'跳转至受显示最大限制的下一页\n' +
-            '可点击右下角菜单,选择一页展示多少条目\n' +
-            '加入了页面大小自适应,此部分使用原生js完成,没有轮子自己造!\n' +
-            '源Json文件的部分图片链接由于豆瓣原因已失效,已修复\n' +
-            '来自看到红字不消除不舒服星人制作\n' +
-            '助教大大给个满呗QvQ'
-        );
+        // console.log(
+        //     '这里是1652702 张智源\n' +
+        //     '本项目基于React,使用ant.design组件完成\n' +
+        //     '本项目遵循MIT开源协议,详见LICENSE\n' +
+        //     'Github:https://github.com/zzy0302/json_resolve\n' +
+        //     '点击首栏:\n' +
+        //     '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
+        //     '点击电影海报或者电影名称可查看详情\n' +
+        //     '点击外部元素可关闭电影详情\n' +
+        //     '下方分页可点击\'···\'跳转至受显示最大限制的下一页\n' +
+        //     '可点击右下角菜单,选择一页展示多少条目\n' +
+        //     '加入了页面大小自适应,此部分使用原生js完成,没有轮子自己造!\n' +
+        //     '源Json文件的部分图片链接由于豆瓣原因已失效,已修复\n' +
+        //     '来自看到红字不消除不舒服星人制作\n' +
+        //     '助教大大给个满呗QvQ'
+        // );
         this.screenChange();
         this.get_films_source()
     }
