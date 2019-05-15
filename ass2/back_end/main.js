@@ -54,6 +54,37 @@ console.log('[server] server is running ......');
    movie_year           varchar(50),
 */
 
+web_server.post('/request/films/get20', (req, res) => {
+    console.log('[web_server] POST: /request/films/get');
+    let connection = mysql.createConnection(dbConnectionInfo);
+    let args = req.body;
+    connection.query(`select movie_key, movie_rating, movie_name, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable limit 20`, (err, t) => {
+                if (err) {
+                    console.log('Get 20 films sql error');
+                    connection.end();
+                    return res.json({success: false});
+                }
+                connection.end();
+                let result = [];
+                t.map((item) => {
+                  // console.log(item)
+                    result.push({
+                        key:item.movie_key,
+                        title:item.movie_name,
+                        poster:item.movie_poster,
+                        casts:item.movie_casts,
+                        directors:item.movie_directors,
+                        genres:item.movie_genres,
+                        pubdate:item.movie_year,
+                        rating:item.movie_rating
+                    });
+                });
+                return res.json({
+                        success: true,
+                        data: result})
+    })
+});
+
 web_server.post('/request/films/get', (req, res) => {
     console.log('[web_server] POST: /request/films/get');
     let connection = mysql.createConnection(dbConnectionInfo);

@@ -248,25 +248,18 @@ class App extends Component {
     modal_search() {
         for (const i of this.state.data) {
             if (i['title'] === this.state.data || i['poster'] === this.state.data) {
-                let writers = '', casts = '';
-                for (const t of i['writers']) {
-                    writers += '<p>' + t.name + '</>'
-                }
-                for (const t of i['casts']) {
-                    casts += '<p>' + t.name + '</>'
-                }
                 this.setState({
                     modal_visible: false,
                     modal_source: '',
                     modal_title: i['title'],
                     modal_poster: i['poster'],
-                    modal_casts: casts,
+                    modal_casts: i['casts'],
                     modal_countries: i['countries'],
                     modal_languages: i['languages'],
                     modal_pubdate: i['pubdate'],
                     modal_summary: '    '+i['summary'],
                     modal_year: i['year'],
-                    modal_writers: writers,
+                    modal_writers: i['writers'],
                     modal_directors: i['directors'],
                     modal_rating: Number(i['rating']),
                     modal_duration: Number(i['duration'])
@@ -282,7 +275,6 @@ class App extends Component {
         axios
             .post(`${serverConfig.url}/request/films/get`)
             .then((res) => {
-                
                 if (res.data.success) {
                     this.setState({data: res.data.data}, () => {
                         message.success('数据读取成功');
@@ -320,8 +312,9 @@ class App extends Component {
         //     '助教大大给个满呗QvQ'
         // );
         this.screenChange();
-        this.get_films_source()
+        this.get_films_source();
     }
+
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
