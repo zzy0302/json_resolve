@@ -28,7 +28,7 @@ yarn-error.log*
 package-lock.json
 yarn.lock
 
-
+/.idea
 
 # big JSON
 /ass2/data_insert_mysql/qwq.json
