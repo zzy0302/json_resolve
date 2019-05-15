@@ -55,9 +55,10 @@ console.log('[server] server is running ......');
 */
 
 web_server.post('/request/films/get20', (req, res) => {
-    console.log('[web_server] POST: /request/films/get');
+    console.log('[web_server] POST: /request/films/get20');
     let connection = mysql.createConnection(dbConnectionInfo);
-    let args = req.body;
+    let args = req;
+    console.log(args);
     connection.query(`select movie_key, movie_rating, movie_name, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable limit 20`, (err, t) => {
                 if (err) {
                     console.log('Get 20 films sql error');

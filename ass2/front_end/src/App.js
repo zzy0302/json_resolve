@@ -269,20 +269,36 @@ class App extends Component {
             }
         }
     }
+
+    get_films_20() {
+        console.log(`${serverConfig.url}/request/films/get20`);
+        axios
+            .post(`${serverConfig.url}/request/films/get20`)
+            .then((res) => {
+                if (res.data.success) {
+                    this.setState({data: res.data.data}, () => {
+                        message.success('数据读取成功');
+                        console.log(this.state.data);
+                        this.setState({loadDown: true},()=>{
+                            this.get_films_source()
+                        })
+                    })
+                } else {
+                    message.error('数据读取失败')
+                }
+            })
+    }
  
     get_films_source() {
-        console.log(`${serverConfig.url}/request/films/get`)
+        console.log(`${serverConfig.url}/request/films/get`);
         axios
             .post(`${serverConfig.url}/request/films/get`)
             .then((res) => {
                 if (res.data.success) {
                     this.setState({data: res.data.data}, () => {
                         message.success('数据读取成功');
-                        // this.setState({data, average_duration, average_rating}, () => {
                             console.log(this.state.data);
-
                             this.setState({loadDown: true})
-                        // })
                     })
                 } else {
                     message.error('数据读取失败')
@@ -311,8 +327,15 @@ class App extends Component {
         //     '来自看到红字不消除不舒服星人制作\n' +
         //     '助教大大给个满呗QvQ'
         // );
+        this.get_where_you_are();
         this.screenChange();
-        this.get_films_source();
+        this.get_films_20();
+    }
+    get_where_you_are(){
+        axios.post(`http://pv.sohu.com/cityjson?ie=utf-8`)
+            .then((res)=>{
+                console.log(res)
+            });
     }
 
 
