@@ -1,3 +1,4 @@
+import re
 import json
 f = open('qwq.json','r',encoding='UTF-8')
 l = f.read()
@@ -8,6 +9,10 @@ f = open('insert.sql','w+',encoding='UTF-8')
 # try:
     # db = pymysql.connect("localhost","webass3","zheshimima","webdb" )
     # cursor = db.cursor()
+duration=0.0
+duration_cut=0.0
+rating=0.0
+rating_cut=0.0
 for i in range(len(j)):
     # print(j[i])
     j[i]['title'] = j[i]['title'].replace('"','\\"').replace("'","\\'")
@@ -53,7 +58,18 @@ for i in range(len(j)):
         j[i]['year'] = j[i]['year'].replace('"','\\"').replace("'","\\'")
     else:
         j[i]['year'] = ''
-    print(i)
+    if re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['duration']):
+        duration+=float(re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['duration'])[0])
+        duration_cut+=1
+    else:
+        print(i,re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['duration']))
+
+    if re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['rating']):
+        rating+=float(re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['rating'])[0])
+        rating_cut+=1
+    else:
+        print(i,re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['rating']))
+    # print(i)
     # print(j[0])
     # print(j[i], end = '\n')
     # print(j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
@@ -69,6 +85,9 @@ for i in range(len(j)):
 #                     j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year']))
 # db.commit()
 # db.close()
+print(rating_cut,duration_cut)
+print('insert into counttable ( duration ,rating ) values ( "%s", "%s"); '% ( duration/duration_cut,rating/rating_cut),end='\n')
+print('insert into counttable ( duration ,rating ) values ( "%s", "%s"); '% ( duration/duration_cut,rating/rating_cut),file=f,end='\n')
 f.close()
 # except Exception as e:
 #     f.close()

@@ -12,6 +12,7 @@ use  webdb;
 
 drop table if exists filmstable;
 
+drop table if exists counttable;
 
 /*==============================================================*/
 /* table: filmstable                                            */
@@ -33,5 +34,17 @@ create table filmstable
    movie_summary        varchar(1000),
    movie_year           varchar(50),
    primary key (movie_key)
+)
+auto_increment = 1;
+
+/*==============================================================*/
+/* table: counttable                                            */
+/*==============================================================*/
+create table counttable
+(
+   id                   int auto_increment,
+   rating               float,
+   duration             float,
+   primary key (id)
 )
 auto_increment = 1;
