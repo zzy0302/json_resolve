@@ -63,7 +63,6 @@ for i in range(len(j)):
         duration_cut+=1
     else:
         print(i,re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['duration']))
-
     if re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['rating']):
         rating+=float(re.findall(r'-?\d+\.?\d*e?-?\d*?', j[i]['rating'])[0])
         rating_cut+=1
@@ -85,8 +84,8 @@ for i in range(len(j)):
 #                     j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year']))
 # db.commit()
 # db.close()
-print(rating_cut,duration_cut)
-print('insert into counttable ( duration ,rating ) values ( "%s", "%s"); '% ( duration/duration_cut,rating/rating_cut),end='\n')
+# print(rating_cut,duration_cut)
+# print('insert into counttable ( duration ,rating ) values ( "%s", "%s"); '% ( duration/duration_cut,rating/rating_cut),end='\n')
 print('insert into counttable ( duration ,rating ) values ( "%s", "%s"); '% ( duration/duration_cut,rating/rating_cut),file=f,end='\n')
 f.close()
 # except Exception as e:

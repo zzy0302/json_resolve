@@ -95,7 +95,7 @@ class App extends Component {
             modal_title: '',
             modal_directors: '',
             modal_poster: '',
-            modal_casts: [],
+            modal_casts: '',
             modal_countries: '',
             modal_languages: '',
             modal_pubdate: '',
@@ -247,25 +247,41 @@ class App extends Component {
 
     modal_search() {
         for (const i of this.state.data) {
-            if (i['title'] === this.state.data || i['poster'] === this.state.data) {
-                this.setState({
-                    modal_visible: false,
-                    modal_source: '',
-                    modal_title: i['title'],
-                    modal_poster: i['poster'],
-                    modal_casts: i['casts'],
-                    modal_countries: i['countries'],
-                    modal_languages: i['languages'],
-                    modal_pubdate: i['pubdate'],
-                    modal_summary: '    '+i['summary'],
-                    modal_year: i['year'],
-                    modal_writers: i['writers'],
-                    modal_directors: i['directors'],
-                    modal_rating: Number(i['rating']),
-                    modal_duration: Number(i['duration'])
-                }, () => {
-                    this.setState({modal_visible: true})
-                })
+            if (i['title'] === this.state.modal_source || i['poster'] === this.state.modal_source) {
+
+                console.log(i);
+                axios
+                    .post(`${serverConfig.url}/request/films/details`,{key:i['key']})
+                    .then((res)=>{
+                        if(res.data.success){
+                            // console.log(res)
+                            console.log(res.data.title,res.data.poster);
+                            message.success('电影详情读取成功');
+                            this.setState({
+                                modal_source: '',
+                                modal_title: res.data.title,
+                                modal_poster: res.data.poster,
+                                modal_casts: res.data.casts,
+                                modal_countries: res.data.countries,
+                                modal_languages: res.data.languages,
+                                modal_pubdate: res.data.pubdate,
+                                modal_summary: '    '+res.data.summary,
+                                modal_year: res.data.year,
+                                modal_writers: res.data.writers,
+                                modal_directors: res.data.directors,
+                                modal_rating: Number(res.data.rating),
+                                modal_duration: Number(res.data.duration)
+                            }, () => {
+                                console.log(this.state.modal_rating , this.state.average_rating);
+                                console.log(this.state.modal_duration , this.state.average_duration);
+                                // console.log(this.state);
+                                this.setState({modal_visible: true})
+                            })
+                        } else {
+                            message.error('电影详情读取失败')
+                        }
+
+                    })
             }
         }
     }
@@ -277,14 +293,14 @@ class App extends Component {
             .then((res) => {
                 if (res.data.success) {
                     this.setState({data: res.data.data}, () => {
-                        message.success('数据读取成功');
+                        message.success('首页数据读取成功');
                         console.log(this.state.data);
                         this.setState({loadDown: true},()=>{
                             this.get_films_source()
                         })
                     })
                 } else {
-                    message.error('数据读取失败')
+                    message.error('首页数据读取失败')
                 }
             })
     }
@@ -296,12 +312,11 @@ class App extends Component {
             .then((res) => {
                 if (res.data.success) {
                     this.setState({data: res.data.data}, () => {
-                        message.success('数据读取成功');
-                            console.log(this.state.data);
-                            this.setState({loadDown: true})
+                        this.get_count();
+                        message.success('全部数据读取成功');
                     })
                 } else {
-                    message.error('数据读取失败')
+                    message.error('全部数据读取失败')
                 }
             })
     }
@@ -327,17 +342,25 @@ class App extends Component {
         //     '来自看到红字不消除不舒服星人制作\n' +
         //     '助教大大给个满呗QvQ'
         // );
-        this.get_where_you_are();
         this.screenChange();
         this.get_films_20();
     }
-    get_where_you_are(){
-        axios.post(`http://pv.sohu.com/cityjson?ie=utf-8`)
-            .then((res)=>{
-                console.log(res)
-            });
-    }
 
+    get_count(){
+        console.log(`${serverConfig.url}/request/count/get`);
+        axios
+            .post(`${serverConfig.url}/request/count/get`)
+            .then((res) => {
+                if (res.data.success) {
+                    this.setState({average_rating: Number(res.data.rating),
+                        average_duration: Number(res.data.duration)}, () => {
+                        message.success('数据读取成功');
+                    })
+                } else {
+                    message.error('数据读取失败')
+                }
+            })
+    }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
@@ -454,40 +477,40 @@ class App extends Component {
                                     <Col span={8}>
                                         <p>
                                             <Card title="导演">
-                                                <div dangerouslySetInnerHTML={{__html: this.state.modal_directors}}/>
+                                                {this.state.modal_directors}
                                             </Card>
                                         </p>
-                                        {this.state.modal_casts.length > 1 ? (
+                                        {/*{this.state.modal_casts.length > 1 ? (*/}
                                             <p>
                                                 <Card title="主演">
-                                                    <div dangerouslySetInnerHTML={{__html: this.state.modal_casts}}/>
+                                                    {this.state.modal_casts}
                                                 </Card>
                                             </p>
-                                        ) : null}
-                                        {this.state.modal_writers.length > 1 ? (
+                                        {/*) : null}*/}
+                                        {/*{this.state.modal_writers.length > 1 ? (*/}
                                             <p>
-                                                <Card title="剧本"><p
-                                                    dangerouslySetInnerHTML={{__html: this.state.modal_writers}}/>
+                                                <Card title="剧本">
+                                                    {this.state.modal_writers}
                                                 </Card>
                                             </p>
-                                        ) : null}
+                                        {/*) : null}*/}
                                     </Col>
                                     <Col span={8}>
-                                        {this.state.modal_pubdate.length > 1 ? (
+                                        {/*{this.state.modal_pubdate.length > 1 ? (*/}
                                             <p>
                                                 <Card title="发布日期">
-                                                    <div dangerouslySetInnerHTML={{__html: this.state.modal_pubdate}}/>
+                                                    {this.state.modal_pubdate}
                                                 </Card>
                                             </p>
-                                        ) : null}
+                                        {/*) : null}*/}
 
-                                        {this.state.modal_summary.length > 1 ? (
+                                        {/*{this.state.modal_summary.length > 1 ? (*/}
                                             <p>
                                                 <Card title="简介">
-                                                    <div dangerouslySetInnerHTML={{__html: this.state.modal_summary}}/>
+                                                    {this.state.modal_summary}
                                                 </Card>
                                             </p>
-                                        ) : null}
+                                        {/*) : null}*/}
                                     </Col>
                                 </Row>
                             </div>
