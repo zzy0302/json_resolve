@@ -20,18 +20,19 @@ drop table if exists counttable;
 create table filmstable
 (
    movie_key            int auto_increment,
-   movie_name           varchar(100),
+   movie_name           varchar(300),
    movie_id             int,
    movie_poster         varchar(500),
-   movie_casts          varchar(500),
+   movie_casts          varchar(1000),
    movie_countries      varchar(50),
    movie_directors      varchar(50),
-   movie_duration       varchar(50),
+   movie_duration       varchar(100),
    movie_genres         varchar(50),
    movie_languages      varchar(50),
    movie_pubdate        varchar(50),
    movie_rating         varchar(50),
-   movie_summary        varchar(1000),
+   movie_writers        varchar(500),
+   movie_summary        varchar(1500),
    movie_year           varchar(50),
    primary key (movie_key)
 )

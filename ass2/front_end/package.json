@@ -8,6 +8,7 @@
     "core-js": "^3.0.1",
     "dimensions": "^0.1.0",
     "react": "^16.8.6",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
     "topo": "^3.0.3",
@@ -22,7 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy":"http://localhost",
+  "proxy": "http://www.washingpatrick.cn",
   "browserslist": [
     ">0.2%",
     "not dead",

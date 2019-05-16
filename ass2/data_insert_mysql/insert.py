@@ -26,6 +26,10 @@ for i in range(len(j)):
         j[i]['casts'] = '  '.join([x['name'] for x in j[i]['casts']]).replace('"','\\"').replace("'","\\'")
     else:
         j[i]['casts'] = ''
+    if j[i]['writers']:
+        j[i]['writers'] = '  '.join([x['name'] for x in j[i]['writers']]).replace('"','\\"').replace("'","\\'")
+    else:
+        j[i]['writers'] = ''
     if j[i]['countries']:
         j[i]['countries'] = j[i]['countries'][0].replace('"','\\"').replace("'","\\'")
     else:
@@ -73,9 +77,9 @@ for i in range(len(j)):
     # print(j[i], end = '\n')
     # print(j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
     #     j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year'])
-    print('insert into filmstable ( movie_name, movie_id, movie_poster, movie_casts, movie_countries, movie_directors, movie_duration, movie_genres, movie_languages, movie_pubdate, movie_rating, movie_summary, movie_year )  values ( "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");'%(\
+    print('insert into filmstable ( movie_name, movie_id, movie_poster, movie_casts, movie_countries, movie_directors, movie_duration, movie_genres, movie_languages, movie_pubdate, movie_rating, movie_summary, movie_year, movie_writers )  values ( "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");'%(\
                     j[i]['title'],j[i]['_id'],j[i]['poster'],j[i]['casts'],j[i]['countries'],j[i]['directors'],j[i]['duration'],\
-                    j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year']),file=f,end='\n')
+                    j[i]['genres'],j[i]['languages'],j[i]['pubdate'],j[i]['rating'],j[i]['summary'],j[i]['year'],j[i]['writers']),file=f,end='\n')
 
 #     cursor.execute('insert into filmstable ( movie_name, movie_id, movie_poster, movie_casts, movie_countries, \
 #                     movie_directors, movie_duration, movie_genres, movie_languages, movie_pubdate, movie_rating, \

@@ -19,7 +19,7 @@ let window;
 // 本地服务器
 let web_server = express();
 web_server.all('*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "http://www.washingpatrick.cn");
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.header("Access-Control-Allow-Credentials", "true");
@@ -53,14 +53,27 @@ console.log('[server] server is running ......');
    movie_summary        varchar(1000),
    movie_year           varchar(50),
 */
+function getClientIp(req) {
+    return req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
+}
+
+
+
+
+
 //Details
+
 web_server.post('/request/films/details', (req, res) => {
-    console.log('[web_server] POST: /request/films/details');
+    console.log('[web_server] POST: /request/films/details '+req.body.key);
+    console.log(getClientIp(req));
     let connection = mysql.createConnection(dbConnectionInfo);
     // console.log(req.ip);
     let args = req.body;
     // console.log(args);
-    connection.query(`select movie_key, movie_countries, movie_pubdate, movie_summary, movie_rating, movie_name, movie_duration, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable where movie_key = ?`, args.key, (err, t) => {
+    connection.query(`select movie_key, movie_countries, movie_languages, movie_writers, movie_pubdate, movie_summary, movie_rating, movie_name, movie_duration, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable where movie_key = ?`, args.key, (err, t) => {
         if (err) {
             console.log('Get details films sql error');
             connection.end();
@@ -76,7 +89,9 @@ web_server.post('/request/films/details', (req, res) => {
                 title:item.movie_name,
                 poster:item.movie_poster,
                 casts:item.movie_casts,
+                languages:item.movie_languages,
                 directors:item.movie_directors,
+                writers:item.movie_writers,
                 genres:item.movie_genres,
                 pubdate:item.movie_year,
                 rating:item.movie_rating,
@@ -89,6 +104,7 @@ web_server.post('/request/films/details', (req, res) => {
 
 web_server.post('/request/films/get20', (req, res) => {
     console.log('[web_server] POST: /request/films/get20');
+    console.log(getClientIp(req));
     let connection = mysql.createConnection(dbConnectionInfo);
     console.log(req.ip);
     let args = req;
@@ -121,6 +137,7 @@ web_server.post('/request/films/get20', (req, res) => {
 
 web_server.post('/request/count/get', (req, res) => {
     console.log('[web_server] POST: /request/count/get');
+    console.log(getClientIp(req));
     let connection = mysql.createConnection(dbConnectionInfo);
     connection.query(`select rating, duration from counttable`, (err, t) => {
         if (err) {
@@ -141,6 +158,7 @@ web_server.post('/request/count/get', (req, res) => {
 
 web_server.post('/request/films/get', (req, res) => {
     console.log('[web_server] POST: /request/films/get');
+    console.log(getClientIp(req));
     let connection = mysql.createConnection(dbConnectionInfo);
     let args = req.body;
     connection.query(`select movie_key, movie_rating, movie_name, movie_poster, movie_casts, movie_directors, movie_genres, movie_year from filmstable`, (err, t) => {

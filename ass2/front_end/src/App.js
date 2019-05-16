@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import {serverConfig} from "./config";
 import axios from "axios";
+import cookie from 'react-cookies';
 // eslint-disable-next-line
 import {
     Button,
@@ -107,7 +108,6 @@ class App extends Component {
             average_rating: 0,
             average_duration: 0,
             table_height: document.body.clientHeight - 270,
-
             columns: [
                 {
                     title: '',
@@ -248,14 +248,12 @@ class App extends Component {
     modal_search() {
         for (const i of this.state.data) {
             if (i['title'] === this.state.modal_source || i['poster'] === this.state.modal_source) {
-
-                console.log(i);
                 axios
                     .post(`${serverConfig.url}/request/films/details`,{key:i['key']})
                     .then((res)=>{
                         if(res.data.success){
                             // console.log(res)
-                            console.log(res.data.title,res.data.poster);
+                            // console.log(res.data);
                             message.success('电影详情读取成功');
                             this.setState({
                                 modal_source: '',
@@ -272,9 +270,6 @@ class App extends Component {
                                 modal_rating: Number(res.data.rating),
                                 modal_duration: Number(res.data.duration)
                             }, () => {
-                                console.log(this.state.modal_rating , this.state.average_rating);
-                                console.log(this.state.modal_duration , this.state.average_duration);
-                                // console.log(this.state);
                                 this.setState({modal_visible: true})
                             })
                         } else {
@@ -287,14 +282,12 @@ class App extends Component {
     }
 
     get_films_20() {
-        console.log(`${serverConfig.url}/request/films/get20`);
         axios
             .post(`${serverConfig.url}/request/films/get20`)
             .then((res) => {
                 if (res.data.success) {
                     this.setState({data: res.data.data}, () => {
                         message.success('首页数据读取成功');
-                        console.log(this.state.data);
                         this.setState({loadDown: true},()=>{
                             this.get_films_source()
                         })
@@ -306,7 +299,6 @@ class App extends Component {
     }
  
     get_films_source() {
-        console.log(`${serverConfig.url}/request/films/get`);
         axios
             .post(`${serverConfig.url}/request/films/get`)
             .then((res) => {
@@ -347,11 +339,13 @@ class App extends Component {
     }
 
     get_count(){
-        console.log(`${serverConfig.url}/request/count/get`);
+
         axios
             .post(`${serverConfig.url}/request/count/get`)
             .then((res) => {
                 if (res.data.success) {
+                    cookie.save('average_rating',Number(res.data.rating));
+                    cookie.save('average_duration',Number(res.data.duration));
                     this.setState({average_rating: Number(res.data.rating),
                         average_duration: Number(res.data.duration)}, () => {
                         message.success('数据读取成功');
@@ -480,37 +474,37 @@ class App extends Component {
                                                 {this.state.modal_directors}
                                             </Card>
                                         </p>
-                                        {/*{this.state.modal_casts.length > 1 ? (*/}
+                                        {this.state.modal_casts.length > 1 ? (
                                             <p>
                                                 <Card title="主演">
                                                     {this.state.modal_casts}
                                                 </Card>
                                             </p>
-                                        {/*) : null}*/}
-                                        {/*{this.state.modal_writers.length > 1 ? (*/}
+                                        ) : null}
+                                        {this.state.modal_writers.length > 1 ? (
                                             <p>
                                                 <Card title="剧本">
                                                     {this.state.modal_writers}
                                                 </Card>
                                             </p>
-                                        {/*) : null}*/}
+                                        ) : null}
                                     </Col>
                                     <Col span={8}>
-                                        {/*{this.state.modal_pubdate.length > 1 ? (*/}
+                                        {this.state.modal_pubdate.length > 1 ? (
                                             <p>
                                                 <Card title="发布日期">
                                                     {this.state.modal_pubdate}
                                                 </Card>
                                             </p>
-                                        {/*) : null}*/}
+                                        ) : null}
 
-                                        {/*{this.state.modal_summary.length > 1 ? (*/}
+                                        {this.state.modal_summary.length > 1 ? (
                                             <p>
                                                 <Card title="简介">
                                                     {this.state.modal_summary}
                                                 </Card>
                                             </p>
-                                        {/*) : null}*/}
+                                        ) : null}
                                     </Col>
                                 </Row>
                             </div>
