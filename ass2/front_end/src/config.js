@@ -1,3 +1,3 @@
 export var serverConfig = {
-    url: 'http://www.washingpatrick.cn:45000'
+    url: 'http://pc.washingpatrick.cn:45000'
 };

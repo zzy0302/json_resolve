@@ -19,7 +19,7 @@ let window;
 // 本地服务器
 let web_server = express();
 web_server.all('*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://www.washingpatrick.cn");
+    res.header("Access-Control-Allow-Origin", "http://pc.washingpatrick.cn");
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.header("Access-Control-Allow-Credentials", "true");

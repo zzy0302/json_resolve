@@ -23,7 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://www.washingpatrick.cn",
+  "proxy": "http://pc.washingpatrick.cn",
   "browserslist": [
     ">0.2%",
     "not dead",
