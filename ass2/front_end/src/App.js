@@ -318,22 +318,23 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // console.log(
-        //     '这里是1652702 张智源\n' +
-        //     '本项目基于React,使用ant.design组件完成\n' +
-        //     '本项目遵循MIT开源协议,详见LICENSE\n' +
-        //     'Github:https://github.com/zzy0302/json_resolve\n' +
-        //     '点击首栏:\n' +
-        //     '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
-        //     '点击电影海报或者电影名称可查看详情\n' +
-        //     '点击外部元素可关闭电影详情\n' +
-        //     '下方分页可点击\'···\'跳转至受显示最大限制的下一页\n' +
-        //     '可点击右下角菜单,选择一页展示多少条目\n' +
-        //     '加入了页面大小自适应,此部分使用原生js完成,没有轮子自己造!\n' +
-        //     '源Json文件的部分图片链接由于豆瓣原因已失效,已修复\n' +
-        //     '来自看到红字不消除不舒服星人制作\n' +
-        //     '助教大大给个满呗QvQ'
-        // );
+        console.log(
+            '这里是1652782 张智源\n' +
+            '本项目基于React,使用ant.design组件完成\n' +
+            '本项目遵循MIT开源协议,详见LICENSE\n' +
+            'Github:https://github.com/zzy0302/json_resolve/ass2\n' +
+            '点击首栏:\n' +
+            '电影可搜索,评分可排序,类型可筛选,导演和主演可搜索\n' +
+            '点击电影海报或者电影名称可查看详情\n' +
+            '点击外部元素可关闭电影详情\n' +
+            '下方分页可点击\'···\'跳转至受显示最大限制的下一页\n' +
+            '可点击右下角菜单,选择一页展示多少条目\n' +
+            '加入了页面大小自适应,此部分使用原生js完成,没有轮子自己造!\n' +
+            '源Json文件的部分图片链接由于豆瓣原因已失效,已重新爬取修复\n' +
+            '详细的爬虫代码可见https://github.com/zzy0302/json_resolve/ass2/data_insert_mysql',
+            '来自看到红字不消除不舒服星人制作\n' +
+            '助教大大给个满呗QvQ'
+        );
         this.screenChange();
         this.get_films_20();
     }
@@ -510,7 +511,7 @@ class App extends Component {
                             </div>
                         </Modal>
                         <Footer style={{textAlign: 'center'}}>
-                            Copyright ©2019 Created by 张智源 1652702
+                            Copyright ©2019 Created by 张智源 1652782
                         </Footer>
                     </FixedRow>
                 </FixedLayout>

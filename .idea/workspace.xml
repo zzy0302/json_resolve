@@ -2,15 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c1ca5a0-7f0f-4e82-a907-f7c8aa681025" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/._index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/precache-manifest.3e481a69c0a5fe66dae07f4b7e9f10ab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/2.18d5580f.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/2.18d5580f.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/main.5c17d213.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/main.5c17d213.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/js/main.2e7bbce4.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/build/static/js/main.2e7bbce4.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass1/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/back_end/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/back_end/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2/back_end/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/back_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2/front_end/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/precache-manifest.618854898ccf8748fde5b90a987595ef.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/static/js/main.28039209.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/static/js/main.28039209.chunk.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2/front_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/front_end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ass2/front_end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,17 +39,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ass2/front_end/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="360">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ass2/front_end/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1965">
-              <caret line="330" column="29" selection-start-line="330" selection-start-column="29" selection-end-line="330" selection-end-column="29" />
+            <state relative-caret-position="2010">
+              <caret line="333" column="51" lean-forward="true" selection-start-line="333" selection-start-column="51" selection-end-line="333" selection-end-column="51" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#716#2560#0" />
@@ -44,6 +57,15 @@
                 <element signature="e#2729#2801#0" />
                 <element signature="e#3556#8758#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ass2/front_end/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -57,7 +79,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ass2/data_insert_mysql/web.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
@@ -69,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ass2/back_end/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+            <state relative-caret-position="300">
+              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -105,10 +127,11 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/ass2/front_end/config.js" />
         <option value="$PROJECT_DIR$/ass2/data_insert_mysql/web.sql" />
-        <option value="$PROJECT_DIR$/ass2/front_end/src/App.js" />
         <option value="$PROJECT_DIR$/ass2/front_end/src/config.js" />
         <option value="$PROJECT_DIR$/ass2/back_end/main.js" />
         <option value="$PROJECT_DIR$/ass2/front_end/package.json" />
+        <option value="$PROJECT_DIR$/ass2/front_end/public/index.html" />
+        <option value="$PROJECT_DIR$/ass2/front_end/src/App.js" />
       </list>
     </option>
   </component>
@@ -153,6 +176,13 @@
               <item name="movie" type="462c0819:PsiDirectoryNode" />
               <item name="ass2" type="462c0819:PsiDirectoryNode" />
               <item name="front_end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="movie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="movie" type="462c0819:PsiDirectoryNode" />
+              <item name="ass2" type="462c0819:PsiDirectoryNode" />
+              <item name="front_end" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="movie" type="b2602c69:ProjectViewProjectNode" />
@@ -223,12 +253,12 @@
       <workItem from="1556451007881" duration="351000" />
       <workItem from="1556451399828" duration="5670000" />
       <workItem from="1557803407198" duration="28000" />
-      <workItem from="1557803511158" duration="12344000" />
+      <workItem from="1557803511158" duration="13095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64794000" />
+    <option name="totallyTimeSpent" value="65545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -284,29 +314,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ass2/back_end/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ass2/front_end/package.json">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ass2/front_end/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1965">
-          <caret line="330" column="29" selection-start-line="330" selection-start-column="29" selection-end-line="330" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#716#2560#0" />
-            <element signature="e#2610#2690#0" />
-            <element signature="e#2729#2801#0" />
-            <element signature="e#3556#8758#0" />
-          </folding>
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -328,6 +337,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ass2/front_end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ass2/front_end/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ass2/front_end/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2010">
+          <caret line="333" column="51" lean-forward="true" selection-start-line="333" selection-start-column="51" selection-end-line="333" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#716#2560#0" />
+            <element signature="e#2610#2690#0" />
+            <element signature="e#2729#2801#0" />
+            <element signature="e#3556#8758#0" />
+          </folding>
         </state>
       </provider>
     </entry>
