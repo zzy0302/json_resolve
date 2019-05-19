@@ -1,27 +1,90 @@
-后端，即服务器部分，使用到的技术栈为`Nodejs` + `Express`
+# WEB第三次作业
 
-# 数据库配置
-在部署之前，你需要在部署机器上安装MySQL，并且在数据库中按照如下的指令建立数据库、用户和表：
+## 文件结构
 
-source ./insert.sql
+目录树:
+├── LICENSE
+├── README.md
+├── config.js
+├── main.js
+├── node_modules
+├── package-lock.json
+├── package.json
+└── yarn.lock
 
-# 后端环境配置
-你需要先安装`nodejs`，在安装完`nodejs`之后，你需要在命令行安装推荐的包管理工具`yarn`：
+## 简介:
+
+- config.js:后端配置文件,包含数据库连接配置、端口监听设置
+- main.js:后端主要代码
+
+## 用法:
+
+安装:
+
 ```
-npm install -g yarn
+npm install
 ```
 
-之后进入项目根目录，使用`yarn`一键安装所有的依赖：
+启动:
+
 ```
-yarn install
+npm start
 ```
 
-当安装完成之后，你即可使用`yarn`来启动express服务：
-```
-yarn start
-```
-等待前端的请求吧！
+### API:
 
-# 基于配置文件的设置
-你可以在项目根目录下找到`config.js`文件，该文件中有一些关于项目的配置，你可以在启动服务器之间修改这些配置。
+地址:pc.washingpatrick.cn:88/request/films/details
+
+说明:
+
+根据传入参数在数据库中搜索电影的详情
+
+传入参数：
+
+key:电影id
+
+返回json:({success: true,
+                key:movie_key,
+                countries:movie_countries,
+                title:movie_name,
+                poster:movie_poster,
+                casts:movie_casts,
+                languages:movie_languages,
+                directors:movie_directors,
+                writers:movie_writers,
+                genres:movie_genres,
+                pubdate:movie_year,
+                rating:movie_rating,
+                duration:movie_duration,
+                summary:movie_summary})
+
+---
+
+地址:pc.washingpatrick.cn:88/request/films/get20
+
+说明:返回电影列表前20条数据
+
+返回json:({key:movie_key,
+                           title:movie_name,
+                           poster:movie_poster,
+                           casts:movie_casts,
+                           directors:movie_directors,
+                           genres:movie_genres,
+                           pubdate:movie_year,
+                           rating:movie_rating})
+
+---
+
+地址:pc.washingpatrick.cn:88/request/films/get
+
+说明:返回所有电影列表数据
+
+返回json:({key:movie_key,
+                           title:movie_name,
+                           poster:movie_poster,
+                           casts:movie_casts,
+                           directors:movie_directors,
+                           genres:movie_genres,
+                           pubdate:movie_year,
+                           rating:movie_rating})
 

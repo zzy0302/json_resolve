@@ -1,32 +1,46 @@
-## creater:1652782 张智源
+# WEB第二次作业
 
-web作业
+## 文件结构
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+目录树:
+├── LICENSE
+├── README.md
+├── build
+│   ├── asset-manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   ├── precache-manifest.ed3d98395d96f5f6414c68005b42538a.js
+│   ├── service-worker.js
+│   └── static
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── films.json
+│   ├── index.css
+│   ├── index.js
+│   ├── json_it.py
+│   ├── layout
+│   ├── logo.svg
+│   └── serviceWorker.js
+├── yarn-error.log
+└── yarn.lock
 
-## Available Scripts
+## 简介:
 
-In the project directory, you can run:
+- build文件夹为发布文件
 
-### `npm start`
+- src文件夹为源码
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 运行```npm start ``` 可在本地访问
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- 运行```npm run build``` 可生产发布文件
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  
