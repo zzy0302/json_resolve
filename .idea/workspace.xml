@@ -3,26 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c1ca5a0-7f0f-4e82-a907-f7c8aa681025" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/._index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/precache-manifest.3e481a69c0a5fe66dae07f4b7e9f10ab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/2.18d5580f.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/2.18d5580f.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/main.5c17d213.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/css/main.5c17d213.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/js/main.2e7bbce4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/build/static/js/main.2e7bbce4.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass1/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass1/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/back_end/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/back_end/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/back_end/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/back_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/back_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ass2/front_end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2/front_end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ass2/front_end/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -48,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ass2/front_end/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="333" column="51" lean-forward="true" selection-start-line="333" selection-start-column="51" selection-end-line="333" selection-end-column="51" />
+            <state relative-caret-position="224">
+              <caret line="354" column="41" lean-forward="true" selection-start-line="354" selection-start-column="41" selection-end-line="354" selection-end-column="41" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#716#2560#0" />
@@ -107,6 +87,7 @@
       <find>data_source</find>
       <find>modal_languages</find>
       <find>剧本</find>
+      <find>message</find>
     </findStrings>
     <replaceStrings>
       <replace>279</replace>
@@ -134,6 +115,9 @@
         <option value="$PROJECT_DIR$/ass2/front_end/src/App.js" />
       </list>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/ass2/back_end/package.json" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
@@ -253,12 +237,12 @@
       <workItem from="1556451007881" duration="351000" />
       <workItem from="1556451399828" duration="5670000" />
       <workItem from="1557803407198" duration="28000" />
-      <workItem from="1557803511158" duration="13095000" />
+      <workItem from="1557803511158" duration="13311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65545000" />
+    <option name="totallyTimeSpent" value="65761000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -356,8 +340,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ass2/front_end/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="333" column="51" lean-forward="true" selection-start-line="333" selection-start-column="51" selection-end-line="333" selection-end-column="51" />
+        <state relative-caret-position="224">
+          <caret line="354" column="41" lean-forward="true" selection-start-line="354" selection-start-column="41" selection-end-line="354" selection-end-column="41" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#716#2560#0" />

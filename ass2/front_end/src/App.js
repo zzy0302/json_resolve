@@ -349,10 +349,10 @@ class App extends Component {
                     cookie.save('average_duration',Number(res.data.duration));
                     this.setState({average_rating: Number(res.data.rating),
                         average_duration: Number(res.data.duration)}, () => {
-                        message.success('数据读取成功');
+                        // message.success('数据读取成功');
                     })
                 } else {
-                    message.error('数据读取失败')
+                    message.error('统计数据读取失败')
                 }
             })
     }
